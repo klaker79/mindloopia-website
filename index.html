@@ -471,6 +471,24 @@
     /* QR */
     #qr-container { margin-top: var(--space-xl); }
     #qr-container svg { width: 200px; height: 200px; border-radius: var(--radius-md); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    .qr-wrapper {
+      position: relative; display: inline-block; cursor: pointer;
+    }
+    .qr-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(10, 14, 30, 0.85); border-radius: var(--radius-md);
+      opacity: 0; transition: opacity var(--duration-normal) var(--ease-out);
+    }
+    .qr-wrapper:hover .qr-overlay,
+    .qr-wrapper:focus-within .qr-overlay { opacity: 1; }
+    .qr-overlay__btn {
+      display: inline-flex; align-items: center; gap: var(--space-sm);
+      padding: var(--space-sm) var(--space-lg); border-radius: var(--radius-full);
+      background: var(--gradient-orange); color: #fff; font-weight: 600;
+      font-size: var(--text-sm); box-shadow: var(--shadow-glow-orange);
+      text-decoration: none; transition: transform var(--duration-fast) var(--ease-spring);
+    }
+    .qr-overlay__btn:hover { transform: scale(1.05); }
 
     /* ══════════════════════════════════════
        FOOTER
@@ -1034,9 +1052,17 @@
             </div>
           </div>
 
-          <div id="qr-container"></div>
+          <div class="qr-wrapper">
+            <div id="qr-container"></div>
+            <a href="https://app.mindloop.cloud" target="_blank" rel="noopener" class="qr-overlay">
+              <span class="qr-overlay__btn" data-i18n="contact.qr.cta">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                Try CostOS Demo
+              </span>
+            </a>
+          </div>
           <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-sm);" data-i18n="contact.qr">
-            Scan to try CostOS demo
+            Scan or click to try CostOS demo
           </p>
         </div>
 
@@ -1357,7 +1383,8 @@
         'contact.whatsapp.label': 'WhatsApp',
         'contact.location.label': '地址',
         'contact.location.value': '西班牙加利西亚 · 全球扩展中',
-        'contact.qr': '扫码体验 CostOS 演示',
+        'contact.qr': '扫码或点击体验 CostOS 演示',
+        'contact.qr.cta': '体验 CostOS 演示',
         'contact.form.title': '发送消息',
         'contact.form.name': '姓名',
         'contact.form.email': '电子邮件',
