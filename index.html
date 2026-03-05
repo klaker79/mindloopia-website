@@ -553,10 +553,25 @@
     @media (max-width: 380px) {
       :root { --container-padding: 1rem; }
     }
+
+    /* Language toggle */
+    .lang-toggle {
+      position: fixed; bottom: 24px; right: 24px; z-index: 9999;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--color-orange), #e85d04);
+      color: #fff; border: none; cursor: pointer;
+      font-size: 16px; font-weight: 700; letter-spacing: 0.02em;
+      box-shadow: 0 4px 20px rgba(255,140,0,0.4);
+      transition: all 0.3s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lang-toggle:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(255,140,0,0.5); }
   </style>
 </head>
 
 <body>
+
+<button class="lang-toggle" id="lang-toggle" title="Switch to Chinese / 切换中文">中文</button>
 
   <!-- ═══════════════════════════════════════
        NAVIGATION
@@ -569,11 +584,11 @@
       </a>
 
       <div class="nav__links" id="nav-links">
-        <a href="#platform" class="nav__link">Platform</a>
-        <a href="#technology" class="nav__link">Technology</a>
-        <a href="#partners" class="nav__link">Partners</a>
-        <a href="#team" class="nav__link">Team</a>
-        <a href="#contact" class="btn btn--primary nav__cta">Contact Us</a>
+        <a href="#platform" class="nav__link" data-i18n="nav.platform">Platform</a>
+        <a href="#technology" class="nav__link" data-i18n="nav.technology">Technology</a>
+        <a href="#partners" class="nav__link" data-i18n="nav.partners">Partners</a>
+        <a href="#team" class="nav__link" data-i18n="nav.team">Team</a>
+        <a href="#contact" class="btn btn--primary nav__cta" data-i18n="nav.contact">Contact Us</a>
       </div>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
@@ -595,26 +610,26 @@
     </div>
 
     <div class="container hero__content">
-      <div class="badge hero__badge">
+      <div class="badge hero__badge" data-i18n="hero.badge">
         <span class="badge__dot"></span>
         Applied Artificial Intelligence
       </div>
 
-      <h1 class="hero__title">
+      <h1 class="hero__title" data-i18n="hero.title">
         Intelligent Operations<br>for the <span class="gradient-text">Real World</span>
       </h1>
 
-      <p class="hero__subtitle">
+      <p class="hero__subtitle" data-i18n="hero.subtitle">
         We build AI systems that automate real business operations &mdash; from cost control and inventory
         to predictive analytics. Live in production. Measurable results.
       </p>
 
       <div class="hero__actions">
-        <a href="#contact" class="btn btn--primary">
+        <a href="#contact" class="btn btn--primary" data-i18n="hero.cta1">
           Partner With Us
           <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="#platform" class="btn btn--outline">
+        <a href="#platform" class="btn btn--outline" data-i18n="hero.cta2">
           See Our Platform
         </a>
       </div>
@@ -622,15 +637,15 @@
       <div class="hero__stats">
         <div class="stat">
           <div class="stat__number count-up" data-target="1" data-suffix="">1</div>
-          <div class="stat__label">Live Product</div>
+          <div class="stat__label" data-i18n="hero.stat1">Live Product</div>
         </div>
         <div class="stat">
           <div class="stat__number count-up" data-target="40" data-suffix="%">0</div>
-          <div class="stat__label">Cost Reduction</div>
+          <div class="stat__label" data-i18n="hero.stat2">Cost Reduction</div>
         </div>
         <div class="stat">
           <div class="stat__number count-up" data-target="100" data-suffix="%">0</div>
-          <div class="stat__label">AI-First Architecture</div>
+          <div class="stat__label" data-i18n="hero.stat3">AI-First Architecture</div>
         </div>
       </div>
     </div>
@@ -644,12 +659,12 @@
   <section class="section" id="problem">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge section-header__badge">
+        <div class="badge section-header__badge" data-i18n="problem.badge">
           <span class="badge__dot"></span>
           The Problem
         </div>
-        <h2 class="section-header__title">Manual Processes <span class="gradient-text">Kill Margins</span></h2>
-        <p class="section-header__subtitle">
+        <h2 class="section-header__title" data-i18n="problem.title">Manual Processes <span class="gradient-text">Kill Margins</span></h2>
+        <p class="section-header__subtitle" data-i18n="problem.subtitle">
           Restaurants, hotels, and service businesses lose 15-30% of revenue to inefficient manual processes.
           Spreadsheets don't scale. Paper gets lost. Decisions come too late.
         </p>
@@ -660,29 +675,29 @@
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 8v4l3 3"/><circle cx="12" cy="12" r="10"/></svg>
           </div>
-          <h3 class="card__title">Hours Wasted</h3>
-          <p class="card__description">Manual data entry, paper invoices, spreadsheet updates. Staff spend hours on tasks AI can do in seconds.</p>
+          <h3 class="card__title" data-i18n="problem.card1.title">Hours Wasted</h3>
+          <p class="card__description" data-i18n="problem.card1.desc">Manual data entry, paper invoices, spreadsheet updates. Staff spend hours on tasks AI can do in seconds.</p>
         </div>
         <div class="card reveal" style="--reveal-delay: 150ms;">
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20"/><path d="M17 7l-5 5-5-5"/></svg>
           </div>
-          <h3 class="card__title">Hidden Costs</h3>
-          <p class="card__description">Without real-time visibility, overordering, waste, and pricing errors silently erode your bottom line.</p>
+          <h3 class="card__title" data-i18n="problem.card2.title">Hidden Costs</h3>
+          <p class="card__description" data-i18n="problem.card2.desc">Without real-time visibility, overordering, waste, and pricing errors silently erode your bottom line.</p>
         </div>
         <div class="card reveal" style="--reveal-delay: 300ms;">
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </div>
-          <h3 class="card__title">Late Decisions</h3>
-          <p class="card__description">Monthly reports mean you discover problems weeks after they happen. By then, the damage is done.</p>
+          <h3 class="card__title" data-i18n="problem.card3.title">Late Decisions</h3>
+          <p class="card__description" data-i18n="problem.card3.desc">Monthly reports mean you discover problems weeks after they happen. By then, the damage is done.</p>
         </div>
         <div class="card reveal" style="--reveal-delay: 450ms;">
           <div class="card__icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
           </div>
-          <h3 class="card__title">Our Solution</h3>
-          <p class="card__description">MindLoop AI automates end-to-end: from scanning invoices to real-time P&L dashboards. AI-first, always on.</p>
+          <h3 class="card__title" data-i18n="problem.card4.title">Our Solution</h3>
+          <p class="card__description" data-i18n="problem.card4.desc">MindLoop AI automates end-to-end: from scanning invoices to real-time P&L dashboards. AI-first, always on.</p>
         </div>
       </div>
 
@@ -697,46 +712,46 @@
   <section class="section" id="platform">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge section-header__badge">
+        <div class="badge section-header__badge" data-i18n="product.badge">
           <span class="badge__dot"></span>
           Live in Production
         </div>
-        <h2 class="section-header__title">Meet <span class="gradient-text">CostOS</span></h2>
-        <p class="section-header__subtitle">
+        <h2 class="section-header__title" data-i18n="product.title">Meet <span class="gradient-text">CostOS</span></h2>
+        <p class="section-header__subtitle" data-i18n="product.subtitle">
           Our first vertical product. A complete restaurant operating system, live and serving real businesses today.
         </p>
       </div>
 
       <div class="product__content reveal">
         <div class="product__info">
-          <h3 class="product__title">The Restaurant <span class="gradient-text">Operating System</span></h3>
-          <p class="product__text">
+          <h3 class="product__title" data-i18n="product.heading">The Restaurant <span class="gradient-text">Operating System</span></h3>
+          <p class="product__text" data-i18n="product.text">
             CostOS replaces spreadsheets, paper invoices, and guesswork with a unified AI-powered platform.
             Real-time cost control, automated purchasing, and intelligent analytics &mdash; all from day one.
           </p>
           <div class="product__features">
-            <div class="product__feature">
+            <div class="product__feature" data-i18n="product.f1">
               <span class="product__feature-dot product__feature-dot--orange"></span>
               Automated invoice scanning with Computer Vision (OCR)
             </div>
-            <div class="product__feature">
+            <div class="product__feature" data-i18n="product.f2">
               <span class="product__feature-dot product__feature-dot--cyan"></span>
               Real-time P&L dashboard with margin alerts
             </div>
-            <div class="product__feature">
+            <div class="product__feature" data-i18n="product.f3">
               <span class="product__feature-dot product__feature-dot--purple"></span>
               Recipe engineering with automatic cost calculation
             </div>
-            <div class="product__feature">
+            <div class="product__feature" data-i18n="product.f4">
               <span class="product__feature-dot product__feature-dot--yellow"></span>
               Predictive purchasing based on demand patterns
             </div>
-            <div class="product__feature">
+            <div class="product__feature" data-i18n="product.f5">
               <span class="product__feature-dot product__feature-dot--pink"></span>
               Multi-tenant SaaS: one platform, unlimited restaurants
             </div>
           </div>
-          <a href="#contact" class="btn btn--primary">
+          <a href="#contact" class="btn btn--primary" data-i18n="product.cta">
             Request a Demo
             <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -758,7 +773,7 @@
       <!-- Product screenshots grid — 2x2 -->
       <div class="screenshots-grid reveal" style="--reveal-delay: 200ms;">
         <div class="product__mockup">
-          <div class="screenshot-label">Recipe Engineering</div>
+          <div class="screenshot-label" data-i18n="product.label1">Recipe Engineering</div>
           <div class="screenshot-placeholder" id="screenshot-recipes">
             <img src="images/screenshot-recipes.png" alt="CostOS Recipe Engineering — ingredient costs, yields, and margins" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
@@ -768,7 +783,7 @@
           </div>
         </div>
         <div class="product__mockup">
-          <div class="screenshot-label">Inventory Management</div>
+          <div class="screenshot-label" data-i18n="product.label2">Inventory Management</div>
           <div class="screenshot-placeholder" id="screenshot-inventory">
             <img src="images/screenshot-inventory.png" alt="CostOS Inventory — real-time stock tracking and alerts" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
@@ -778,7 +793,7 @@
           </div>
         </div>
         <div class="product__mockup">
-          <div class="screenshot-label">Order Management</div>
+          <div class="screenshot-label" data-i18n="product.label3">Order Management</div>
           <div class="screenshot-placeholder" id="screenshot-orders">
             <img src="images/screenshot-orders.png" alt="CostOS Orders — supplier order tracking and receiving" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
@@ -799,12 +814,12 @@
   <section class="section" id="technology" style="background: var(--color-bg-base);">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge section-header__badge">
+        <div class="badge section-header__badge" data-i18n="tech.badge">
           <span class="badge__dot"></span>
           Our Stack
         </div>
-        <h2 class="section-header__title">Built on <span class="gradient-text">Proven Technology</span></h2>
-        <p class="section-header__subtitle">
+        <h2 class="section-header__title" data-i18n="tech.title">Built on <span class="gradient-text">Proven Technology</span></h2>
+        <p class="section-header__subtitle" data-i18n="tech.subtitle">
           Every component is production-tested. Not prototypes &mdash; real systems serving real businesses.
         </p>
       </div>
@@ -817,8 +832,8 @@
             <div class="img-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
             </div>
-            <h3 class="img-card__title">Computer Vision</h3>
-            <p class="img-card__desc">Invoice & receipt OCR. Automatic data extraction. Multi-language document processing.</p>
+            <h3 class="img-card__title" data-i18n="tech.card1.title">Computer Vision</h3>
+            <p class="img-card__desc" data-i18n="tech.card1.desc">Invoice & receipt OCR. Automatic data extraction. Multi-language document processing.</p>
             <div class="img-card__tags">
               <span class="img-card__tag">OCR</span><span class="img-card__tag">Claude AI</span><span class="img-card__tag">PDF</span>
             </div>
@@ -831,8 +846,8 @@
             <div class="img-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             </div>
-            <h3 class="img-card__title">Natural Language Processing</h3>
-            <p class="img-card__desc">AI business chat. Natural language queries. Automated reports. Multi-language support.</p>
+            <h3 class="img-card__title" data-i18n="tech.card2.title">Natural Language Processing</h3>
+            <p class="img-card__desc" data-i18n="tech.card2.desc">AI business chat. Natural language queries. Automated reports. Multi-language support.</p>
             <div class="img-card__tags">
               <span class="img-card__tag">Chat AI</span><span class="img-card__tag">Reports</span><span class="img-card__tag">i18n</span>
             </div>
@@ -845,8 +860,8 @@
             <div class="img-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
             </div>
-            <h3 class="img-card__title">Predictive Analytics</h3>
-            <p class="img-card__desc">Demand forecasting. Purchase optimization. Waste reduction. Price trends.</p>
+            <h3 class="img-card__title" data-i18n="tech.card3.title">Predictive Analytics</h3>
+            <p class="img-card__desc" data-i18n="tech.card3.desc">Demand forecasting. Purchase optimization. Waste reduction. Price trends.</p>
             <div class="img-card__tags">
               <span class="img-card__tag">Forecasting</span><span class="img-card__tag">ML</span><span class="img-card__tag">Real-time</span>
             </div>
@@ -859,8 +874,8 @@
             <div class="img-card__icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
             </div>
-            <h3 class="img-card__title">API-First Architecture</h3>
-            <p class="img-card__desc">RESTful API. POS integrations. White-label ready. Webhook events.</p>
+            <h3 class="img-card__title" data-i18n="tech.card4.title">API-First Architecture</h3>
+            <p class="img-card__desc" data-i18n="tech.card4.desc">RESTful API. POS integrations. White-label ready. Webhook events.</p>
             <div class="img-card__tags">
               <span class="img-card__tag">REST</span><span class="img-card__tag">Webhooks</span><span class="img-card__tag">Docker</span>
             </div>
@@ -878,12 +893,12 @@
   <section class="section" id="partners">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge section-header__badge">
+        <div class="badge section-header__badge" data-i18n="partners.badge">
           <span class="badge__dot"></span>
           Grow With Us
         </div>
-        <h2 class="section-header__title">Partnership <span class="gradient-text">Models</span></h2>
-        <p class="section-header__subtitle">
+        <h2 class="section-header__title" data-i18n="partners.title">Partnership <span class="gradient-text">Models</span></h2>
+        <p class="section-header__subtitle" data-i18n="partners.subtitle">
           We're building an ecosystem. Whether you're a tech company, a distributor, or a regional operator &mdash;
           there's a model for every industry, worldwide.
         </p>
@@ -894,22 +909,22 @@
           <div class="partner-card__icon partner-card__icon--link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
           </div>
-          <h3 class="card__title">Technology Partners</h3>
-          <p class="card__description">Integrate MindLoop AI into your platform. API access, documentation, and joint go-to-market opportunities.</p>
+          <h3 class="card__title" data-i18n="partners.card1.title">Technology Partners</h3>
+          <p class="card__description" data-i18n="partners.card1.desc">Integrate MindLoop AI into your platform. API access, documentation, and joint go-to-market opportunities.</p>
         </div>
         <div class="card partner-card reveal" style="--reveal-delay: 150ms;">
           <div class="partner-card__icon partner-card__icon--label">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
           </div>
-          <h3 class="card__title">White-Label</h3>
-          <p class="card__description">Deploy MindLoop under your brand. Full customization with our multi-tenant architecture. Your brand, our engine.</p>
+          <h3 class="card__title" data-i18n="partners.card2.title">White-Label</h3>
+          <p class="card__description" data-i18n="partners.card2.desc">Deploy MindLoop under your brand. Full customization with our multi-tenant architecture. Your brand, our engine.</p>
         </div>
         <div class="card partner-card reveal" style="--reveal-delay: 300ms;">
           <div class="partner-card__icon partner-card__icon--globe">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="28" height="28"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
           </div>
-          <h3 class="card__title">Regional Partners</h3>
-          <p class="card__description">Exclusive territory licensing for your market. Local adaptation, training, and revenue sharing model.</p>
+          <h3 class="card__title" data-i18n="partners.card3.title">Regional Partners</h3>
+          <p class="card__description" data-i18n="partners.card3.desc">Exclusive territory licensing for your market. Local adaptation, training, and revenue sharing model.</p>
         </div>
       </div>
     </div>
@@ -923,20 +938,20 @@
   <section class="section" id="team" style="background: var(--color-bg-base);">
     <div class="container">
       <div class="section-header reveal">
-        <div class="badge section-header__badge">
+        <div class="badge section-header__badge" data-i18n="team.badge">
           <span class="badge__dot"></span>
           Our Team
         </div>
-        <h2 class="section-header__title">Small Team. <span class="gradient-text">Big Vision.</span></h2>
+        <h2 class="section-header__title" data-i18n="team.title">Small Team. <span class="gradient-text">Big Vision.</span></h2>
       </div>
 
       <div class="team__content reveal">
-        <p style="color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-lg); max-width: none;">
+        <p style="color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-lg); max-width: none;" data-i18n="team.p1">
           Based in Spain, building for the world. We're a focused team of engineers and operators who believe
           AI should solve real problems &mdash; not just demo well. Every line of code is written to run in
           production, serving real businesses with real revenue at stake.
         </p>
-        <p style="color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-xl); max-width: none;">
+        <p style="color: var(--color-text-secondary); line-height: 1.8; margin-bottom: var(--space-xl); max-width: none;" data-i18n="team.p2">
           We've built MindLoop AI from the ground up: backend infrastructure, AI pipelines, frontend applications,
           and the business logic that ties it all together. We ship fast, iterate faster, and never lose sight
           of what matters &mdash; making our customers' operations measurably better.
@@ -957,20 +972,20 @@
       <!-- Bottom stats bar -->
       <div class="bottom-stats reveal" style="margin-top: var(--space-3xl);">
         <div style="text-align: center;">
-          <div class="bottom-stat__number bottom-stat__number--cyan">1 Live Product</div>
-          <div class="bottom-stat__label">In Production</div>
+          <div class="bottom-stat__number bottom-stat__number--cyan" data-i18n="team.stat1">1 Live Product</div>
+          <div class="bottom-stat__label" data-i18n="team.stat1.label">In Production</div>
         </div>
         <div style="text-align: center;">
-          <div class="bottom-stat__number bottom-stat__number--purple">Multi-Tenant SaaS</div>
-          <div class="bottom-stat__label">Architecture</div>
+          <div class="bottom-stat__number bottom-stat__number--purple" data-i18n="team.stat2">Multi-Tenant SaaS</div>
+          <div class="bottom-stat__label" data-i18n="team.stat2.label">Architecture</div>
         </div>
         <div style="text-align: center;">
-          <div class="bottom-stat__number bottom-stat__number--orange">EU &rarr; Asia</div>
-          <div class="bottom-stat__label">Expansion</div>
+          <div class="bottom-stat__number bottom-stat__number--orange" data-i18n="team.stat3">EU &rarr; Asia</div>
+          <div class="bottom-stat__label" data-i18n="team.stat3.label">Expansion</div>
         </div>
         <div style="text-align: center;">
-          <div class="bottom-stat__number bottom-stat__number--pink">API-First</div>
-          <div class="bottom-stat__label">Design</div>
+          <div class="bottom-stat__number bottom-stat__number--pink" data-i18n="team.stat4">API-First</div>
+          <div class="bottom-stat__label" data-i18n="team.stat4.label">Design</div>
         </div>
       </div>
     </div>
@@ -985,8 +1000,8 @@
     <div class="container">
       <div class="contact__grid reveal">
         <div>
-          <h2 class="contact__title">Let's Build <span class="gradient-text">Together</span></h2>
-          <p class="contact__subtitle">
+          <h2 class="contact__title" data-i18n="contact.title">Let's Build <span class="gradient-text">Together</span></h2>
+          <p class="contact__subtitle" data-i18n="contact.subtitle">
             Whether you're looking for a technology partner, want to license our platform, or simply want
             to learn more &mdash; we'd love to hear from you.
           </p>
@@ -995,47 +1010,47 @@
             <div class="contact__detail">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               <div>
-                <div class="contact__detail-label">Email</div>
+                <div class="contact__detail-label" data-i18n="contact.email.label">Email</div>
                 <a href="mailto:mindloopia@gmail.com" class="contact__detail-value">mindloopia@gmail.com</a>
               </div>
             </div>
             <div class="contact__detail">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
               <div>
-                <div class="contact__detail-label">WhatsApp</div>
+                <div class="contact__detail-label" data-i18n="contact.whatsapp.label">WhatsApp</div>
                 <a href="https://wa.me/34602629013" class="contact__detail-value" target="_blank" rel="noopener">+34 602 629 013</a>
               </div>
             </div>
             <div class="contact__detail">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <div>
-                <div class="contact__detail-label">Location</div>
-                <div class="contact__detail-value">Galicia, Spain &middot; Expanding globally</div>
+                <div class="contact__detail-label" data-i18n="contact.location.label">Location</div>
+                <div class="contact__detail-value" data-i18n="contact.location.value">Galicia, Spain &middot; Expanding globally</div>
               </div>
             </div>
           </div>
 
           <div id="qr-container"></div>
-          <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-sm);">
+          <p style="font-size: var(--text-xs); color: var(--color-text-muted); margin-top: var(--space-sm);" data-i18n="contact.qr">
             Scan to try CostOS demo
           </p>
         </div>
 
         <div class="glass" style="padding: var(--space-2xl);">
-          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-lg);">Send us a message</h3>
+          <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-lg);" data-i18n="contact.form.title">Send us a message</h3>
           <form id="contact-form" style="display: flex; flex-direction: column; gap: var(--space-lg);">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg);">
               <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
-                <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Name</label>
+                <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;" data-i18n="contact.form.name">Name</label>
                 <input type="text" name="name" required placeholder="Your name" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: var(--text-sm); color: var(--color-text-primary); outline: none; transition: border-color 150ms;">
               </div>
               <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
-                <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Email</label>
+                <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;" data-i18n="contact.form.email">Email</label>
                 <input type="email" name="email" required placeholder="you@company.com" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: var(--text-sm); color: var(--color-text-primary); outline: none; transition: border-color 150ms;">
               </div>
             </div>
             <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
-              <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Interest</label>
+              <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;" data-i18n="contact.form.interest">Interest</label>
               <select name="interest" style="background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: var(--text-sm); color: var(--color-text-primary); outline: none; cursor: pointer; -webkit-appearance: none; appearance: none;">
                 <option value="">Select your interest...</option>
                 <option value="tech-partner">Technology Partnership</option>
@@ -1047,10 +1062,10 @@
               </select>
             </div>
             <div style="display: flex; flex-direction: column; gap: var(--space-xs);">
-              <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;">Message</label>
+              <label style="font-size: var(--text-xs); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em;" data-i18n="contact.form.message">Message</label>
               <textarea name="message" rows="4" placeholder="Tell us about your project..." style="background: var(--color-bg-elevated); border: 1px solid var(--color-border); border-radius: var(--radius-md); padding: 0.75rem 1rem; font-size: var(--text-sm); color: var(--color-text-primary); outline: none; resize: vertical; min-height: 100px; transition: border-color 150ms;"></textarea>
             </div>
-            <button type="submit" class="btn btn--primary" style="width: 100%; padding: 1rem;">
+            <button type="submit" class="btn btn--primary" style="width: 100%; padding: 1rem;" data-i18n="contact.form.submit">
               Send Message
               <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </button>
@@ -1065,7 +1080,7 @@
        ═══════════════════════════════════════ -->
   <footer class="footer">
     <div class="container">
-      <p class="footer__copyright">&copy; <span id="current-year">2026</span> MindLoop AI &mdash; Galicia, Spain. All rights reserved.</p>
+      <p class="footer__copyright" data-i18n="footer.copyright">&copy; <span id="current-year">2026</span> MindLoop AI &mdash; Galicia, Spain. All rights reserved.</p>
     </div>
   </footer>
 
@@ -1258,6 +1273,176 @@
       });
     }
 
+    /* ── Language Translation System ── */
+    const translations = {
+      zh: {
+        'nav.platform': '平台',
+        'nav.technology': '技术',
+        'nav.partners': '合作',
+        'nav.team': '团队',
+        'nav.contact': '联系我们',
+        'hero.badge': '应用人工智能',
+        'hero.title': '智能运营<br>赋能<span class="gradient-text">真实世界</span>',
+        'hero.subtitle': '我们构建AI系统，自动化真实业务运营——从成本控制、库存管理到预测分析。已投入生产，成果可量化。',
+        'hero.cta1': '成为合作伙伴',
+        'hero.cta2': '查看我们的平台',
+        'hero.stat1': '已上线产品',
+        'hero.stat2': '成本降低',
+        'hero.stat3': 'AI优先架构',
+        'problem.badge': '行业痛点',
+        'problem.title': '手工流程<span class="gradient-text">吞噬利润</span>',
+        'problem.subtitle': '餐饮、酒店和服务业因低效的手工流程损失15-30%的收入。电子表格无法扩展，纸质单据容易丢失，决策总是滞后。',
+        'problem.card1.title': '时间浪费',
+        'problem.card1.desc': '手工数据录入、纸质发票、电子表格更新。员工花费数小时完成AI几秒钟就能处理的任务。',
+        'problem.card2.title': '隐性成本',
+        'problem.card2.desc': '缺乏实时可见性，过度订购、浪费和定价错误在悄然侵蚀您的利润。',
+        'problem.card3.title': '决策滞后',
+        'problem.card3.desc': '月度报告意味着您在问题发生数周后才发现。此时损失已经造成。',
+        'problem.card4.title': '我们的解决方案',
+        'problem.card4.desc': 'MindLoop AI 端到端自动化：从扫描发票到实时损益仪表板。AI优先，永不停歇。',
+        'product.badge': '已投入生产',
+        'product.title': '认识 <span class="gradient-text">CostOS</span>',
+        'product.subtitle': '我们的首款垂直产品。完整的餐厅运营系统，已上线并服务于真实企业。',
+        'product.heading': '餐厅<span class="gradient-text">操作系统</span>',
+        'product.text': 'CostOS 用统一的AI驱动平台取代电子表格、纸质发票和猜测。实时成本控制、自动化采购和智能分析——从第一天起全部就绪。',
+        'product.f1': '计算机视觉自动发票扫描 (OCR)',
+        'product.f2': '实时损益仪表板与利润预警',
+        'product.f3': '菜品工程与自动成本计算',
+        'product.f4': '基于需求模式的预测采购',
+        'product.f5': '多租户SaaS：一个平台，无限餐厅',
+        'product.cta': '申请演示',
+        'product.label1': '菜品工程',
+        'product.label2': '库存管理',
+        'product.label3': '订单管理',
+        'tech.badge': '技术栈',
+        'tech.title': '基于<span class="gradient-text">成熟技术</span>构建',
+        'tech.subtitle': '每个组件都经过生产验证。不是原型——而是服务真实企业的真实系统。',
+        'tech.card1.title': '计算机视觉',
+        'tech.card1.desc': '发票和收据OCR。自动数据提取。多语言文档处理。',
+        'tech.card2.title': '自然语言处理',
+        'tech.card2.desc': 'AI商业助手。自然语言查询。自动化报告。多语言支持。',
+        'tech.card3.title': '预测分析',
+        'tech.card3.desc': '需求预测。采购优化。减少浪费。价格趋势分析。',
+        'tech.card4.title': 'API优先架构',
+        'tech.card4.desc': 'RESTful API。POS系统集成。白标就绪。Webhook事件推送。',
+        'partners.badge': '携手共赢',
+        'partners.title': '合作<span class="gradient-text">模式</span>',
+        'partners.subtitle': '我们正在构建生态系统。无论您是技术公司、分销商还是区域运营商——我们为全球每个行业提供合作模式。',
+        'partners.card1.title': '技术合作伙伴',
+        'partners.card1.desc': '将 MindLoop AI 集成到您的平台。提供API访问、文档和联合市场推广机会。',
+        'partners.card2.title': '白标授权',
+        'partners.card2.desc': '以您的品牌部署 MindLoop。基于多租户架构的完全定制。您的品牌，我们的引擎。',
+        'partners.card3.title': '区域合作伙伴',
+        'partners.card3.desc': '您所在市场的独家区域授权。本地化适配、培训和收入分成模式。',
+        'team.badge': '我们的团队',
+        'team.title': '小团队。<span class="gradient-text">大愿景。</span>',
+        'team.p1': '总部位于西班牙，面向全球构建。我们是一支专注的工程师和运营团队，坚信AI应该解决真实问题——而不仅仅是做演示。每一行代码都为生产环境而写，服务于有真实收入的真实企业。',
+        'team.p2': '我们从零开始构建了 MindLoop AI：后端基础设施、AI管道、前端应用，以及将所有这些连接在一起的业务逻辑。我们快速交付，迭代更快，始终专注于真正重要的事——让客户的运营取得可量化的改善。',
+        'team.stat1': '1款已上线产品',
+        'team.stat1.label': '生产环境运行',
+        'team.stat2': '多租户SaaS',
+        'team.stat2.label': '系统架构',
+        'team.stat3': '欧洲 → 亚洲',
+        'team.stat3.label': '全球扩展',
+        'team.stat4': 'API优先',
+        'team.stat4.label': '设计理念',
+        'contact.title': '携手<span class="gradient-text">共建</span>',
+        'contact.subtitle': '无论您是寻找技术合作伙伴、希望授权使用我们的平台，还是只是想了解更多——我们期待您的来信。',
+        'contact.email.label': '电子邮件',
+        'contact.whatsapp.label': 'WhatsApp',
+        'contact.location.label': '地址',
+        'contact.location.value': '西班牙加利西亚 · 全球扩展中',
+        'contact.qr': '扫码体验 CostOS 演示',
+        'contact.form.title': '发送消息',
+        'contact.form.name': '姓名',
+        'contact.form.email': '电子邮件',
+        'contact.form.interest': '感兴趣领域',
+        'contact.form.message': '留言',
+        'contact.form.submit': '发送消息',
+        'footer.copyright': '© 2026 MindLoop AI — 西班牙加利西亚。保留所有权利。'
+      }
+    };
+
+    // Store original English text
+    const originals = {};
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      var btn = document.getElementById('lang-toggle');
+      if (currentLang === 'en') {
+        // Save originals and switch to Chinese
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          var key = el.getAttribute('data-i18n');
+          if (!originals[key]) {
+            originals[key] = el.innerHTML;
+          }
+          if (translations.zh[key]) {
+            // For elements with child spans (like product features with dot spans)
+            if (el.classList.contains('product__feature')) {
+              var dot = el.querySelector('.product__feature-dot');
+              el.innerHTML = '';
+              if (dot) el.appendChild(dot);
+              el.appendChild(document.createTextNode('\n              ' + translations.zh[key]));
+            } else if (el.querySelector('.btn__icon')) {
+              // Buttons with SVG icons
+              var icon = el.querySelector('.btn__icon');
+              el.innerHTML = translations.zh[key] + ' ';
+              if (icon) el.appendChild(icon);
+            } else if (el.querySelector('.badge__dot')) {
+              // Badge elements
+              var dot2 = el.querySelector('.badge__dot');
+              el.innerHTML = '';
+              el.appendChild(dot2);
+              el.appendChild(document.createTextNode('\n          ' + translations.zh[key]));
+            } else {
+              el.innerHTML = translations.zh[key];
+            }
+          }
+        });
+        // Update placeholders
+        var nameInput = document.querySelector('input[name="name"]');
+        if (nameInput) { nameInput.dataset.origPlaceholder = nameInput.placeholder; nameInput.placeholder = '您的姓名'; }
+        var emailInput = document.querySelector('input[name="email"]');
+        if (emailInput) { emailInput.dataset.origPlaceholder = emailInput.placeholder; emailInput.placeholder = 'you@company.com'; }
+        var msgInput = document.querySelector('textarea[name="message"]');
+        if (msgInput) { msgInput.dataset.origPlaceholder = msgInput.placeholder; msgInput.placeholder = '请告诉我们关于您的项目...'; }
+        // Update select options
+        var sel = document.querySelector('select[name="interest"]');
+        if (sel) {
+          sel.dataset.origOptions = JSON.stringify(Array.from(sel.options).map(function(o){ return o.textContent; }));
+          var zhOpts = ['选择您感兴趣的领域...','技术合作','白标授权','区域分销','投资','产品演示','其他'];
+          Array.from(sel.options).forEach(function(o,i){ if(zhOpts[i]) o.textContent = zhOpts[i]; });
+        }
+        btn.textContent = 'EN';
+        btn.title = 'Switch to English';
+        currentLang = 'zh';
+        document.documentElement.lang = 'zh';
+      } else {
+        // Restore English
+        document.querySelectorAll('[data-i18n]').forEach(function(el) {
+          var key = el.getAttribute('data-i18n');
+          if (originals[key]) el.innerHTML = originals[key];
+        });
+        // Restore placeholders
+        var nameInput = document.querySelector('input[name="name"]');
+        if (nameInput && nameInput.dataset.origPlaceholder) nameInput.placeholder = nameInput.dataset.origPlaceholder;
+        var emailInput = document.querySelector('input[name="email"]');
+        if (emailInput && emailInput.dataset.origPlaceholder) emailInput.placeholder = emailInput.dataset.origPlaceholder;
+        var msgInput = document.querySelector('textarea[name="message"]');
+        if (msgInput && msgInput.dataset.origPlaceholder) msgInput.placeholder = msgInput.dataset.origPlaceholder;
+        // Restore select
+        var sel = document.querySelector('select[name="interest"]');
+        if (sel && sel.dataset.origOptions) {
+          var orig = JSON.parse(sel.dataset.origOptions);
+          Array.from(sel.options).forEach(function(o,i){ if(orig[i]) o.textContent = orig[i]; });
+        }
+        btn.textContent = '中文';
+        btn.title = 'Switch to Chinese / 切换中文';
+        currentLang = 'en';
+        document.documentElement.lang = 'en';
+      }
+    }
+
     /* ── Init ── */
     document.addEventListener('DOMContentLoaded', () => {
       const canvas = document.getElementById('particle-canvas');
@@ -1270,6 +1455,7 @@
       if (qrEl) qrEl.innerHTML = renderQR();
       const yearEl = document.getElementById('current-year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
+      document.getElementById('lang-toggle').addEventListener('click', toggleLanguage);
     });
   </script>
 </body>
