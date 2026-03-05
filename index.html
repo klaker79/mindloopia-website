@@ -405,6 +405,10 @@
       display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);
       margin-top: var(--space-3xl);
     }
+    .screenshots-grid--2col {
+      grid-template-columns: repeat(2, 1fr);
+      max-width: 800px; margin-left: auto; margin-right: auto;
+    }
     .screenshots-grid .product__mockup { max-width: 100%; }
     .screenshot-label {
       font-size: var(--text-sm); font-weight: 600; color: var(--color-text-muted);
@@ -750,6 +754,10 @@
               <span class="product__feature-dot product__feature-dot--pink"></span>
               Multi-tenant SaaS: one platform, unlimited restaurants
             </div>
+            <div class="product__feature" data-i18n="product.f6">
+              <span class="product__feature-dot product__feature-dot--cyan"></span>
+              Built-in AI financial assistant chatbot with real-time restaurant data
+            </div>
           </div>
           <a href="#contact" class="btn btn--primary" data-i18n="product.cta">
             Request a Demo
@@ -770,20 +778,10 @@
         </div>
       </div>
 
-      <!-- Product screenshots grid — 2x2 -->
-      <div class="screenshots-grid reveal" style="--reveal-delay: 200ms;">
+      <!-- Product screenshots grid — 2 columns centered -->
+      <div class="screenshots-grid screenshots-grid--2col reveal" style="--reveal-delay: 200ms;">
         <div class="product__mockup">
-          <div class="screenshot-label" data-i18n="product.label1">Recipe Engineering</div>
-          <div class="screenshot-placeholder" id="screenshot-recipes">
-            <img src="images/screenshot-recipes.png" alt="CostOS Recipe Engineering — ingredient costs, yields, and margins" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
-            <div class="screenshot-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;opacity:0.3;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-              <span>Recipe Cost Analysis</span>
-            </div>
-          </div>
-        </div>
-        <div class="product__mockup">
-          <div class="screenshot-label" data-i18n="product.label2">Inventory Management</div>
+          <div class="screenshot-label" data-i18n="product.label1">Inventory Management</div>
           <div class="screenshot-placeholder" id="screenshot-inventory">
             <img src="images/screenshot-inventory.png" alt="CostOS Inventory — real-time stock tracking and alerts" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
@@ -793,12 +791,12 @@
           </div>
         </div>
         <div class="product__mockup">
-          <div class="screenshot-label" data-i18n="product.label3">Order Management</div>
-          <div class="screenshot-placeholder" id="screenshot-orders">
-            <img src="images/screenshot-orders.png" alt="CostOS Orders — supplier order tracking and receiving" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
+          <div class="screenshot-label" data-i18n="product.label2">AI Financial Assistant</div>
+          <div class="screenshot-placeholder screenshot-placeholder--chatbot" id="screenshot-chatbot">
+            <img src="images/screenshot-chatbot.png" alt="CostOS AI Assistant — intelligent chatbot for cost analysis, margins, and stock" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;opacity:0.3;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><path d="M9 14l2 2 4-4"/></svg>
-              <span>Smart Purchasing</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;opacity:0.3;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              <span>AI Cost Assistant</span>
             </div>
           </div>
         </div>
@@ -1310,10 +1308,10 @@
         'product.f3': '菜品工程与自动成本计算',
         'product.f4': '基于需求模式的预测采购',
         'product.f5': '多租户SaaS：一个平台，无限餐厅',
+        'product.f6': '内置AI财务助手聊天机器人，实时获取餐厅数据',
         'product.cta': '申请演示',
-        'product.label1': '菜品工程',
-        'product.label2': '库存管理',
-        'product.label3': '订单管理',
+        'product.label1': '库存管理',
+        'product.label2': 'AI财务助手',
         'tech.badge': '技术栈',
         'tech.title': '基于<span class="gradient-text">成熟技术</span>构建',
         'tech.subtitle': '每个组件都经过生产验证。不是原型——而是服务真实企业的真实系统。',
