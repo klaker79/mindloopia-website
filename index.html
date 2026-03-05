@@ -260,6 +260,52 @@
     .card__title { font-size: var(--text-xl); margin-bottom: var(--space-sm); position: relative; z-index: 1; }
     .card__description { font-size: var(--text-sm); color: rgba(255,255,255,0.78); position: relative; z-index: 1; line-height: 1.8; }
 
+    /* Image Cards (tech section) */
+    .img-card {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      min-height: 340px; display: flex; flex-direction: column; justify-content: flex-end;
+      transition: all var(--duration-normal) var(--ease-out); border: 1px solid var(--color-border);
+    }
+    .img-card:hover { transform: translateY(-6px) scale(1.01); box-shadow: var(--shadow-lg); border-color: var(--color-border-accent); }
+    .img-card__bg {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s var(--ease-out); filter: brightness(0.7);
+    }
+    .img-card:hover .img-card__bg { transform: scale(1.08); filter: brightness(0.8); }
+    .img-card__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,12,26,0.1) 0%, rgba(8,12,26,0.6) 40%, rgba(8,12,26,0.95) 100%);
+    }
+    .img-card__content { position: relative; z-index: 1; padding: var(--space-2xl); }
+    .img-card__icon {
+      width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: rgba(255,140,0,0.15); border: 1px solid rgba(255,140,0,0.25);
+      margin-bottom: var(--space-md); color: var(--color-orange);
+    }
+    .img-card__icon svg { width: 22px; height: 22px; }
+    .img-card__title { font-size: var(--text-xl); font-weight: 700; color: #fff; margin-bottom: var(--space-sm); }
+    .img-card__desc { font-size: var(--text-sm); color: rgba(255,255,255,0.8); line-height: 1.7; }
+    .img-card__tags { display: flex; flex-wrap: wrap; gap: var(--space-xs); margin-top: var(--space-md); }
+    .img-card__tag {
+      padding: 0.2rem 0.6rem; font-size: 0.7rem; font-weight: 500;
+      color: var(--color-text-muted); background: rgba(107,79,160,0.15);
+      border: 1px solid rgba(107,79,160,0.2); border-radius: var(--radius-full); letter-spacing: 0.04em;
+    }
+
+    /* Hero bg image */
+    .hero__bg-image {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      animation: imageFadeIn 1.5s var(--ease-out) forwards, float 8s ease-in-out 1.5s infinite;
+    }
+    @keyframes imageFadeIn { from { opacity: 0; transform: scale(1.05); } to { opacity: 1; transform: scale(1); } }
+
+    /* Full-width image banner */
+    .image-banner {
+      width: 100%; height: 300px; object-fit: cover; border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border); margin-top: var(--space-2xl);
+    }
+
     /* Stats */
     .stat { text-align: center; }
     .stat__number { font-family: var(--font-display); font-size: var(--text-3xl); font-weight: 800; color: var(--color-orange); margin-bottom: var(--space-xs); }
@@ -408,7 +454,7 @@
 
     /* QR */
     #qr-container { margin-top: var(--space-xl); }
-    #qr-container svg { width: 160px; height: 160px; border-radius: var(--radius-md); border: 1px solid var(--color-border); padding: 8px; background: rgba(19,24,54,0.5); }
+    #qr-container svg { width: 180px; height: 180px; border-radius: var(--radius-md); border: 1px solid var(--color-border); }
 
     /* ══════════════════════════════════════
        FOOTER
@@ -521,6 +567,7 @@
        ═══════════════════════════════════════ -->
   <section class="hero" id="hero">
     <div class="hero__bg">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&auto=format" alt="" class="hero__bg-image" loading="eager">
       <div class="hero__bg-overlay"></div>
       <canvas id="particle-canvas"></canvas>
     </div>
@@ -615,6 +662,11 @@
           <h3 class="card__title">Our Solution</h3>
           <p class="card__description">MindLoop AI automates end-to-end: from scanning invoices to real-time P&L dashboards. AI-first, always on.</p>
         </div>
+      </div>
+
+      <!-- Visual banner -->
+      <div class="reveal" style="margin-top: var(--space-3xl);">
+        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1400&q=80&auto=format" alt="AI technology visualization" class="image-banner" loading="lazy">
       </div>
     </div>
   </section>
@@ -719,33 +771,61 @@
       </div>
 
       <div class="tech__grid">
-        <div class="card reveal" style="--reveal-delay: 0ms;">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <div class="img-card reveal" style="--reveal-delay: 0ms;">
+          <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=600&q=80&auto=format" alt="Computer Vision" class="img-card__bg" loading="lazy">
+          <div class="img-card__overlay"></div>
+          <div class="img-card__content">
+            <div class="img-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            </div>
+            <h3 class="img-card__title">Computer Vision</h3>
+            <p class="img-card__desc">Invoice & receipt OCR. Automatic data extraction. Multi-language document processing.</p>
+            <div class="img-card__tags">
+              <span class="img-card__tag">OCR</span><span class="img-card__tag">Claude AI</span><span class="img-card__tag">PDF</span>
+            </div>
           </div>
-          <h3 class="card__title">Computer Vision</h3>
-          <p class="card__description">Invoice & receipt OCR. Automatic data extraction. Multi-language document processing. Handwriting recognition.</p>
         </div>
-        <div class="card reveal" style="--reveal-delay: 150ms;">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="img-card reveal" style="--reveal-delay: 150ms;">
+          <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&q=80&auto=format" alt="NLP" class="img-card__bg" loading="lazy">
+          <div class="img-card__overlay"></div>
+          <div class="img-card__content">
+            <div class="img-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            </div>
+            <h3 class="img-card__title">Natural Language Processing</h3>
+            <p class="img-card__desc">AI business chat. Natural language queries. Automated reports. Multi-language support.</p>
+            <div class="img-card__tags">
+              <span class="img-card__tag">Chat AI</span><span class="img-card__tag">Reports</span><span class="img-card__tag">i18n</span>
+            </div>
           </div>
-          <h3 class="card__title">Natural Language Processing</h3>
-          <p class="card__description">AI business chat assistant. Natural language data queries. Automated report generation. Multi-language support.</p>
         </div>
-        <div class="card reveal" style="--reveal-delay: 300ms;">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+        <div class="img-card reveal" style="--reveal-delay: 300ms;">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format" alt="Analytics" class="img-card__bg" loading="lazy">
+          <div class="img-card__overlay"></div>
+          <div class="img-card__content">
+            <div class="img-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+            </div>
+            <h3 class="img-card__title">Predictive Analytics</h3>
+            <p class="img-card__desc">Demand forecasting. Purchase optimization. Waste reduction. Price trends.</p>
+            <div class="img-card__tags">
+              <span class="img-card__tag">Forecasting</span><span class="img-card__tag">ML</span><span class="img-card__tag">Real-time</span>
+            </div>
           </div>
-          <h3 class="card__title">Predictive Analytics</h3>
-          <p class="card__description">Demand forecasting. Purchase optimization. Waste reduction algorithms. Price trend analysis.</p>
         </div>
-        <div class="card reveal" style="--reveal-delay: 450ms;">
-          <div class="card__icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="img-card reveal" style="--reveal-delay: 450ms;">
+          <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80&auto=format" alt="API Architecture" class="img-card__bg" loading="lazy">
+          <div class="img-card__overlay"></div>
+          <div class="img-card__content">
+            <div class="img-card__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h3 class="img-card__title">API-First Architecture</h3>
+            <p class="img-card__desc">RESTful API. POS integrations. White-label ready. Webhook events.</p>
+            <div class="img-card__tags">
+              <span class="img-card__tag">REST</span><span class="img-card__tag">Webhooks</span><span class="img-card__tag">Docker</span>
+            </div>
           </div>
-          <h3 class="card__title">API-First Architecture</h3>
-          <p class="card__description">RESTful API for all features. POS system integrations. White-label ready. Webhook support for real-time events.</p>
         </div>
       </div>
     </div>
@@ -953,6 +1033,7 @@
   <!-- ═══════════════════════════════════════
        SCRIPTS
        ═══════════════════════════════════════ -->
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
   <script>
     /* ── Particle Field (logo-inspired colors) ── */
     class ParticleField {
@@ -1089,43 +1170,21 @@
       }
     }
 
-    /* ── QR Code (pre-computed matrix) ── */
+    /* ── QR Code (using qrcode-generator library) ── */
     function renderQR() {
-      const matrix = [
-        "1111111001101110011111111",
-        "1000001011001001010000001",
-        "1011101010110010010111101",
-        "1011101010011111010111101",
-        "1011101000010010010111101",
-        "1000001001011110010000001",
-        "1111111010101010111111111",
-        "0000000011010000000000000",
-        "1000001011001111110011110",
-        "1011100001111011001111110",
-        "1100001111001101100101011",
-        "1110100011000011111110010",
-        "1110001110110000101100001",
-        "1011110101100110100100010",
-        "1011001110000111110111011",
-        "1011010010101001001011010",
-        "1000101111001110111101001",
-        "0000000010100100010000000",
-        "1111111001101100101001001",
-        "1000001000110011100010000",
-        "1011101001111001111011111",
-        "1011101000101110111000110",
-        "1011101000100110100011010",
-        "1000001001101100111100010",
-        "1111111010011100111001001"
-      ];
-      const size = 25, cell = 8, pad = 16;
-      const svgSize = size * cell + pad * 2;
-      let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgSize} ${svgSize}" shape-rendering="crispEdges">`;
-      svg += `<rect width="${svgSize}" height="${svgSize}" fill="transparent"/>`;
-      for (let y = 0; y < size; y++) {
-        for (let x = 0; x < size; x++) {
-          if (matrix[y][x] === '1') {
-            svg += `<rect x="${pad+x*cell}" y="${pad+y*cell}" width="${cell}" height="${cell}" fill="#e6edf3" rx="1"/>`;
+      if (typeof qrcode === 'undefined') return '<p style="color:var(--color-text-muted);">QR loading...</p>';
+      var qr = qrcode(0, 'M');
+      qr.addData('https://mindloopia.com');
+      qr.make();
+      var count = qr.getModuleCount();
+      var cell = 6, pad = 16;
+      var svgSize = count * cell + pad * 2;
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + svgSize + ' ' + svgSize + '" shape-rendering="crispEdges">';
+      svg += '<rect width="' + svgSize + '" height="' + svgSize + '" fill="rgba(19,24,54,0.5)" rx="8"/>';
+      for (var y = 0; y < count; y++) {
+        for (var x = 0; x < count; x++) {
+          if (qr.isDark(y, x)) {
+            svg += '<rect x="' + (pad + x * cell) + '" y="' + (pad + y * cell) + '" width="' + cell + '" height="' + cell + '" fill="#e6edf3" rx="1"/>';
           }
         }
       }
