@@ -397,17 +397,13 @@
       background: radial-gradient(circle at 30% 40%, rgba(0,160,220,0.06) 0%, transparent 50%),
                   radial-gradient(circle at 70% 60%, rgba(255,140,0,0.04) 0%, transparent 50%);
     }
-    .screenshot-placeholder img { width: 100%; height: 100%; object-fit: cover; position: relative; z-index: 1; border-radius: var(--radius-lg); }
+    .screenshot-placeholder img { width: 100%; height: 100%; object-fit: cover; object-position: top; position: relative; z-index: 1; border-radius: var(--radius-lg); }
     .screenshot-placeholder--fallback img { display: none; }
     .screenshot-fallback { display: none; flex-direction: column; align-items: center; gap: var(--space-sm); z-index: 1; }
     .screenshot-placeholder--fallback .screenshot-fallback { display: flex; }
     .screenshots-grid {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-xl);
       margin-top: var(--space-3xl);
-    }
-    .screenshots-grid--2col {
-      grid-template-columns: repeat(2, 1fr);
-      max-width: 800px; margin-left: auto; margin-right: auto;
     }
     .screenshots-grid .product__mockup { max-width: 100%; }
     .screenshot-label {
@@ -778,10 +774,20 @@
         </div>
       </div>
 
-      <!-- Product screenshots grid — 2 columns centered -->
-      <div class="screenshots-grid screenshots-grid--2col reveal" style="--reveal-delay: 200ms;">
+      <!-- Product screenshots grid — 3 columns -->
+      <div class="screenshots-grid reveal" style="--reveal-delay: 200ms;">
         <div class="product__mockup">
-          <div class="screenshot-label" data-i18n="product.label1">Inventory Management</div>
+          <div class="screenshot-label" data-i18n="product.label1">Recipe Engineering</div>
+          <div class="screenshot-placeholder" id="screenshot-recipes">
+            <img src="images/screenshot-recipes.png" alt="CostOS Recipe — dish cost engineering and ingredient breakdown" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
+            <div class="screenshot-fallback">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;opacity:0.3;"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+              <span>Recipe Costing</span>
+            </div>
+          </div>
+        </div>
+        <div class="product__mockup">
+          <div class="screenshot-label" data-i18n="product.label2">Inventory Management</div>
           <div class="screenshot-placeholder" id="screenshot-inventory">
             <img src="images/screenshot-inventory.png" alt="CostOS Inventory — real-time stock tracking and alerts" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
@@ -791,8 +797,8 @@
           </div>
         </div>
         <div class="product__mockup">
-          <div class="screenshot-label" data-i18n="product.label2">AI Financial Assistant</div>
-          <div class="screenshot-placeholder screenshot-placeholder--chatbot" id="screenshot-chatbot">
+          <div class="screenshot-label" data-i18n="product.label3">AI Financial Assistant</div>
+          <div class="screenshot-placeholder" id="screenshot-chatbot">
             <img src="images/screenshot-chatbot.png" alt="CostOS AI Assistant — intelligent chatbot for cost analysis, margins, and stock" onerror="this.parentElement.classList.add('screenshot-placeholder--fallback')">
             <div class="screenshot-fallback">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="width:40px;height:40px;opacity:0.3;"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
@@ -1310,8 +1316,9 @@
         'product.f5': '多租户SaaS：一个平台，无限餐厅',
         'product.f6': '内置AI财务助手聊天机器人，实时获取餐厅数据',
         'product.cta': '申请演示',
-        'product.label1': '库存管理',
-        'product.label2': 'AI财务助手',
+        'product.label1': '菜品工程',
+        'product.label2': '库存管理',
+        'product.label3': 'AI财务助手',
         'tech.badge': '技术栈',
         'tech.title': '基于<span class="gradient-text">成熟技术</span>构建',
         'tech.subtitle': '每个组件都经过生产验证。不是原型——而是服务真实企业的真实系统。',
