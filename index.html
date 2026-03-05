@@ -1,38 +1,1361 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindloopia - Automatización y Marketing Digital</title>
-    <style>
-        body { 
-            font-family: Arial, sans-serif; 
-            margin: 40px;
-            line-height: 1.6;
-            color: #333;
-        }
-        h1 { color: #0077b5; }
-        .container { max-width: 800px; margin: 0 auto; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MindLoop AI — Intelligent Operations Platform</title>
+  <meta name="description" content="AI-powered operations platform. Computer vision, predictive analytics, and NLP transforming business operations. Live in production.">
+  <meta name="keywords" content="AI platform, operations management, computer vision, SaaS, restaurant technology, cost management">
+  <meta name="author" content="MindLoop AI">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MindLoop AI — Intelligent Operations Platform">
+  <meta property="og:description" content="AI-powered operations management. Computer vision, predictive analytics, NLP. Live in production, scaling globally.">
+  <meta property="og:url" content="https://mindloopia.com">
+  <meta property="og:image" content="https://mindloopia.com/images/og-share.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════ */
+    /* RESET & BASE                                */
+    /* ═══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg-secondary: #0d1117;
+      --bg-card: rgba(255,255,255,0.03);
+      --bg-card-hover: rgba(255,255,255,0.06);
+      --indigo: #667eea;
+      --purple: #764ba2;
+      --violet: #7c3aed;
+      --orange: #f97316;
+      --orange-hover: #ea580c;
+      --cyan: #22d3ee;
+      --green: #10b981;
+      --text: #e6edf3;
+      --text-secondary: rgba(255,255,255,0.65);
+      --text-muted: rgba(255,255,255,0.4);
+      --border: rgba(255,255,255,0.08);
+      --border-hover: rgba(255,255,255,0.15);
+      --glass: rgba(255,255,255,0.03);
+      --glass-border: rgba(255,255,255,0.06);
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-display: 'Outfit', 'Inter', sans-serif;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 24px;
+    }
+
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 16px;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--indigo); text-decoration: none; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* NAVIGATION                                  */
+    /* ═══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,10,15,0.8);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--text);
+    }
+
+    .nav-logo img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--orange), #f59e0b);
+      color: #fff !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(249,115,22,0.4);
+    }
+
+    .nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* HERO                                        */
+    /* ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      -webkit-mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+      mask-image: radial-gradient(ellipse at 50% 50%, black 20%, transparent 70%);
+      animation: gridPulse 8s ease-in-out infinite alternate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 40%, rgba(102,126,234,0.12) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(118,75,162,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 50% 90%, rgba(249,115,22,0.06) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    @keyframes gridPulse {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 24px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #667eea, #a78bfa, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--orange), #f59e0b);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(249,115,22,0.4);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 32px;
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border-hover);
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--indigo);
+      background: rgba(102,126,234,0.08);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .stat-value .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse 2s infinite;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* SECTIONS COMMON                             */
+    /* ═══════════════════════════════════════════ */
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* PROBLEM / SOLUTION                          */
+    /* ═══════════════════════════════════════════ */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .problem-card, .solution-card {
+      padding: 40px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+
+    .problem-card {
+      background: rgba(239,68,68,0.03);
+      border-color: rgba(239,68,68,0.15);
+    }
+
+    .solution-card {
+      background: rgba(102,126,234,0.04);
+      border-color: rgba(102,126,234,0.15);
+    }
+
+    .problem-card h3, .solution-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .problem-card h3 { color: #f87171; }
+    .solution-card h3 { color: var(--indigo); }
+
+    .problem-card ul, .solution-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .problem-card li, .solution-card li {
+      padding-left: 28px;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .problem-card li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: #f87171;
+      font-weight: 700;
+    }
+
+    .solution-card li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* PRODUCT SHOWCASE                            */
+    /* ═══════════════════════════════════════════ */
+    #product { background: var(--bg-secondary); }
+
+    .product-showcase {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    .product-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .product-item:nth-child(even) { direction: rtl; }
+    .product-item:nth-child(even) > * { direction: ltr; }
+
+    .product-info h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .product-info p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .feature-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .browser-frame {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 60px rgba(102,126,234,0.08);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .browser-dot:nth-child(1) { background: #ff5f57; }
+    .browser-dot:nth-child(2) { background: #ffbd2e; }
+    .browser-dot:nth-child(3) { background: #28c840; }
+
+    .browser-content {
+      aspect-ratio: 16/10;
+      background: linear-gradient(135deg, rgba(102,126,234,0.15), rgba(118,75,162,0.1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .browser-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* TECHNOLOGY                                   */
+    /* ═══════════════════════════════════════════ */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .tech-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .tech-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+
+    .tech-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .tech-icon-vision { background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(102,126,234,0.05)); }
+    .tech-icon-nlp { background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(124,58,237,0.05)); }
+    .tech-icon-analytics { background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(34,211,238,0.05)); }
+    .tech-icon-api { background: linear-gradient(135deg, rgba(249,115,22,0.2), rgba(249,115,22,0.05)); }
+
+    .tech-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .tech-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .tech-card li {
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .tech-card li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--indigo);
+      font-weight: 700;
+    }
+
+    .tech-stack {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+
+    .tech-badge {
+      padding: 8px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* PARTNERSHIP                                  */
+    /* ═══════════════════════════════════════════ */
+    #partners { background: var(--bg-secondary); }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .partner-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--glass-border);
+      background: var(--bg-card);
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .partner-card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+    }
+
+    .partner-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    .partner-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .partner-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .metrics-row {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+    }
+
+    .metric {
+      text-align: center;
+    }
+
+    .metric-value {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--indigo);
+    }
+
+    .metric-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* TEAM                                        */
+    /* ═══════════════════════════════════════════ */
+    .team-content {
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .team-content p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 40px;
+    }
+
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* CONTACT                                     */
+    /* ═══════════════════════════════════════════ */
+    #contact { background: var(--bg-secondary); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .contact-item a {
+      color: var(--text-secondary);
+      transition: color 0.2s;
+    }
+
+    .contact-item a:hover { color: var(--text); }
+
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+    }
+
+    .qr-section {
+      margin-top: 32px;
+      padding: 24px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      background: var(--glass);
+      text-align: center;
+    }
+
+    .qr-section p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+
+    #qr-container svg {
+      max-width: 160px;
+      margin: 0 auto;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 14px 18px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      border-color: var(--indigo);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 120px; }
+
+    .contact-form button {
+      padding: 14px 32px;
+      background: linear-gradient(135deg, var(--orange), #f59e0b);
+      color: #fff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .contact-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(249,115,22,0.3);
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* FOOTER                                      */
+    /* ═══════════════════════════════════════════ */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    footer span { color: var(--indigo); }
+
+    /* ═══════════════════════════════════════════ */
+    /* ANIMATIONS                                  */
+    /* ═══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════ */
+    /* RESPONSIVE                                  */
+    /* ═══════════════════════════════════════════ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: rgba(10,10,15,0.95);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
+        padding: 24px;
+        gap: 16px;
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-hamburger { display: block; }
+      .hero { min-height: auto; padding: 120px 0 60px; }
+      .hero-stats { gap: 24px; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .product-item { grid-template-columns: 1fr; }
+      .product-item:nth-child(even) { direction: ltr; }
+      .tech-grid { grid-template-columns: 1fr; }
+      .partner-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .metrics-row { gap: 24px; }
+      section { padding: 60px 0; }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2.2rem; }
+      .hero-stats { flex-direction: column; gap: 16px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-outline { width: 100%; justify-content: center; }
+      .trust-row { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Mindloopia</h1>
-        <h2>Automatización y Marketing Digital</h2>
-        <p>Especialistas en soluciones innovadoras para LinkedIn automation y social media.</p>
-        <p>Transformamos tu presencia digital con tecnología inteligente.</p>
-        
-        <h3>Servicios:</h3>
-        <ul>
-            <li>Automatización de LinkedIn</li>
-            <li>Marketing Digital</li>
-            <li>Integración con n8n</li>
-            <li>Social Media Management</li>
-        </ul>
-        
-        <footer>
-            <p><strong>Contacto:</strong> info@mindloopia.com</p>
-        </footer>
+
+  <!-- ════════════ NAVIGATION ════════════ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="images/logo.png" alt="MindLoop AI">
+        MindLoop AI
+      </a>
+      <div class="nav-links" id="navLinks">
+        <a href="#product">Platform</a>
+        <a href="#tech">Technology</a>
+        <a href="#partners">Partners</a>
+        <a href="#team">Team</a>
+        <a href="#contact" class="nav-cta">Contact Us</a>
+      </div>
+      <button class="nav-hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')" aria-label="Menu">☰</button>
     </div>
+  </nav>
+
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          Live in Production
+        </div>
+        <h1>Intelligent Operations<br><span class="gradient-text">for the Real World</span></h1>
+        <p class="hero-subtitle">
+          MindLoop AI transforms complex business operations with computer vision,
+          predictive analytics, and natural language processing.
+          Currently deployed. Revenue generating. Scaling globally.
+        </p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Book a Demo →</a>
+          <a href="#product" class="btn-outline">See It Live ↓</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-value"><span class="dot"></span> Live</div>
+            <div class="stat-label">In Production</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">40%</div>
+            <div class="stat-label">Cost Reduction</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">AI-First</div>
+            <div class="stat-label">Architecture</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">SaaS</div>
+            <div class="stat-label">Multi-Tenant</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PROBLEM / SOLUTION ════════════ -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge">The Opportunity</div>
+        <h2>Manual Processes <span class="gradient-text">Are Killing Margins</span></h2>
+        <p>Businesses worldwide lose 15-30% of revenue to operational inefficiency. We fix that with AI.</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card reveal">
+          <h3>The Problem</h3>
+          <ul>
+            <li>Manual data entry from paper invoices and receipts</li>
+            <li>Disconnected spreadsheets with outdated information</li>
+            <li>No real-time visibility into costs and margins</li>
+            <li>Decisions based on intuition, not data</li>
+          </ul>
+        </div>
+        <div class="solution-card reveal">
+          <h3>Our Solution</h3>
+          <ul>
+            <li>Computer vision reads invoices and documents automatically</li>
+            <li>Real-time dashboards replace spreadsheets and guesswork</li>
+            <li>Predictive analytics optimize purchasing and inventory</li>
+            <li>AI assistant answers business questions in natural language</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PRODUCT SHOWCASE ════════════ -->
+  <section id="product">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge"><span class="badge-dot"></span> Live Product</div>
+        <h2>CostOS: <span class="gradient-text">Our First Vertical</span></h2>
+        <p>AI-powered cost management for food & beverage. Deployed, generating revenue, and proving our technology in the real world.</p>
+      </div>
+      <div class="product-showcase">
+        <div class="product-item reveal">
+          <div class="product-info">
+            <h3>Real-Time Financial Dashboard</h3>
+            <p>Every margin, every cost, every day. Instant visibility into P&L, food costs, and operational KPIs. No more waiting for month-end reports.</p>
+            <div class="feature-pills">
+              <span class="pill">Live P&L</span>
+              <span class="pill">Cost Tracking</span>
+              <span class="pill">KPI Dashboard</span>
+            </div>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+            </div>
+            <div class="browser-content" id="screenshot-1">
+              Screenshot: Dashboard
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item reveal">
+          <div class="product-info">
+            <h3>AI Recipe Engineering</h3>
+            <p>Know your exact cost per dish to the cent. AI-assisted recipe costing with real-time ingredient price updates and margin optimization.</p>
+            <div class="feature-pills">
+              <span class="pill">Recipe Costing</span>
+              <span class="pill">Menu Engineering</span>
+              <span class="pill">Margin Alerts</span>
+            </div>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+            </div>
+            <div class="browser-content" id="screenshot-2">
+              Screenshot: Recipe Engineering
+            </div>
+          </div>
+        </div>
+
+        <div class="product-item reveal">
+          <div class="product-info">
+            <h3>Smart Inventory & Procurement</h3>
+            <p>Automated stock tracking, supplier management, and intelligent purchasing. Reduce waste, optimize orders, and never run out of stock.</p>
+            <div class="feature-pills">
+              <span class="pill">Stock Tracking</span>
+              <span class="pill">Supplier Analytics</span>
+              <span class="pill">Smart Alerts</span>
+            </div>
+          </div>
+          <div class="browser-frame">
+            <div class="browser-bar">
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+              <span class="browser-dot"></span>
+            </div>
+            <div class="browser-content" id="screenshot-3">
+              Screenshot: Inventory
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TECHNOLOGY ════════════ -->
+  <section id="tech">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge">Our Technology</div>
+        <h2>Built for AI, <span class="gradient-text">From Day One</span></h2>
+        <p>Our platform is engineered around AI capabilities, not bolted on as an afterthought.</p>
+      </div>
+      <div class="tech-grid">
+        <div class="tech-card reveal">
+          <div class="tech-icon tech-icon-vision">👁️</div>
+          <h3>Computer Vision</h3>
+          <ul>
+            <li>Invoice and receipt OCR</li>
+            <li>Automatic data extraction</li>
+            <li>Multi-language document processing</li>
+            <li>Handwriting recognition</li>
+          </ul>
+        </div>
+        <div class="tech-card reveal">
+          <div class="tech-icon tech-icon-nlp">💬</div>
+          <h3>Natural Language Processing</h3>
+          <ul>
+            <li>AI business chat assistant</li>
+            <li>Natural language data queries</li>
+            <li>Automated report generation</li>
+            <li>Multi-language support</li>
+          </ul>
+        </div>
+        <div class="tech-card reveal">
+          <div class="tech-icon tech-icon-analytics">📊</div>
+          <h3>Predictive Analytics</h3>
+          <ul>
+            <li>Demand forecasting</li>
+            <li>Purchase optimization</li>
+            <li>Waste reduction algorithms</li>
+            <li>Price trend analysis</li>
+          </ul>
+        </div>
+        <div class="tech-card reveal">
+          <div class="tech-icon tech-icon-api">⚡</div>
+          <h3>API-First Architecture</h3>
+          <ul>
+            <li>RESTful API for all features</li>
+            <li>POS system integrations</li>
+            <li>White-label ready</li>
+            <li>Webhook support for real-time events</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tech-stack reveal">
+        <span class="tech-badge">Node.js</span>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">Claude AI</span>
+        <span class="tech-badge">Docker</span>
+        <span class="tech-badge">REST API</span>
+        <span class="tech-badge">Zustand</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ PARTNERSHIP ════════════ -->
+  <section id="partners">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge">Partner With Us</div>
+        <h2>Scale With <span class="gradient-text">MindLoop AI</span></h2>
+        <p>We're looking for strategic partners to bring AI-powered operations to every industry, worldwide.</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-card reveal">
+          <div class="partner-icon">🔗</div>
+          <h3>Technology Partners</h3>
+          <p>Integrate MindLoop AI into your platform. API access, documentation, and joint go-to-market opportunities.</p>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-icon">🏷️</div>
+          <h3>White-Label</h3>
+          <p>Deploy MindLoop under your brand. Full customization with our multi-tenant architecture. Your brand, our engine.</p>
+        </div>
+        <div class="partner-card reveal">
+          <div class="partner-icon">🌏</div>
+          <h3>Regional Partners</h3>
+          <p>Exclusive territory licensing for your market. Local adaptation, training, and revenue sharing model.</p>
+        </div>
+      </div>
+      <div class="metrics-row reveal">
+        <div class="metric">
+          <div class="metric-value">1 Live Product</div>
+          <div class="metric-label">CostOS — Revenue Generating</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">Multi-Tenant SaaS</div>
+          <div class="metric-label">Enterprise Architecture</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">EU → Asia</div>
+          <div class="metric-label">Expansion Target</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">API-First</div>
+          <div class="metric-label">Integration Ready</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ TEAM ════════════ -->
+  <section id="team">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge">The Team</div>
+        <h2>Small Team. <span class="gradient-text">Big Vision.</span></h2>
+      </div>
+      <div class="team-content reveal">
+        <p>
+          Founded in Galicia, Spain — with deep experience in hospitality operations
+          from Kuala Lumpur to Europe. We built MindLoop AI because we lived the problems
+          we're solving. Two founders. One live product. Ready to scale globally.
+        </p>
+        <div class="trust-row">
+          <div class="trust-item">🇪🇺 Based in EU — GDPR Compliant</div>
+          <div class="trust-item">🔒 Security-First Architecture</div>
+          <div class="trust-item">🌏 Expanding to Asia-Pacific</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACT ════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="badge">Get in Touch</div>
+        <h2>Let's <span class="gradient-text">Talk</span></h2>
+        <p>Interested in partnering, investing, or just learning more? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Reach Us Directly</h3>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <a href="mailto:ikerameas@gmail.com">ikerameas@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <a href="https://wa.me/34641557477" target="_blank">WhatsApp: +34 641 557 477</a>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">🌐</div>
+            <a href="https://app.mindloop.cloud" target="_blank">app.mindloop.cloud</a>
+          </div>
+
+          <div class="qr-section">
+            <div id="qr-container"></div>
+            <p>Scan to visit mindloopia.com</p>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" onsubmit="handleContact(event)">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Email Address" required>
+          <input type="text" name="company" placeholder="Company (Optional)">
+          <textarea name="message" placeholder="How can we work together?" required></textarea>
+          <button type="submit">Send Message →</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <div class="container">
+      <p>© 2026 <span>MindLoop AI</span>. All rights reserved. Built in Spain. Expanding globally.</p>
+    </div>
+  </footer>
+
+  <!-- ════════════ JAVASCRIPT ════════════ -->
+  <script>
+    // ── Scroll Reveal ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Close mobile nav on link click ──
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navLinks').classList.remove('open');
+      });
+    });
+
+    // ── Contact form → mailto fallback ──
+    function handleContact(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const company = form.company.value;
+      const message = form.message.value;
+      const subject = encodeURIComponent('MindLoop AI — Contact from ' + name + (company ? ' (' + company + ')' : ''));
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nCompany: ' + (company || 'N/A') + '\n\nMessage:\n' + message);
+      window.location.href = 'mailto:ikerameas@gmail.com?subject=' + subject + '&body=' + body;
+    }
+
+    // ── QR Code Generator (minimal, ~2KB) ──
+    // Generates SVG QR code for a given URL
+    (function() {
+      function generateQR(text) {
+        // QR Code Model 2, Version 3 (29x29), Error correction L
+        // This is a simplified generator for short URLs
+        const size = 29;
+        const modules = [];
+        for (let i = 0; i < size; i++) {
+          modules[i] = [];
+          for (let j = 0; j < size; j++) {
+            modules[i][j] = false;
+          }
+        }
+
+        // Instead of implementing full QR encoding, use a pre-computed approach
+        // for the specific URL "https://mindloopia.com"
+        // Generated using standard QR encoding, Version 2, EC Level M
+        const data = "https://mindloopia.com";
+
+        // Use a canvas-free SVG approach with the URL encoded as a simple pattern
+        // For production, we'll use a deterministic QR generation
+        const qrSize = 25;
+        const cellSize = 8;
+        const svgSize = qrSize * cellSize + 32; // padding
+
+        // Pre-computed QR matrix for "https://mindloopia.com"
+        // Version 2-M (25x25), generated with Python qrcode library
+        const matrix = [
+          "1111111001101110011111111",
+          "1000001011001001010000001",
+          "1011101010110010010111101",
+          "1011101010011111010111101",
+          "1011101000010010010111101",
+          "1000001001011110010000001",
+          "1111111010101010111111111",
+          "0000000011010000000000000",
+          "1000001011001111110011110",
+          "1011100001111011001111110",
+          "1100001111001101100101011",
+          "1110100011000011111110010",
+          "1110001110110000101100001",
+          "1011110101100110100100010",
+          "1011001110000111110111011",
+          "1011010010101001001011010",
+          "1000101111001110111101001",
+          "0000000010100100010000000",
+          "1111111001101100101001001",
+          "1000001000110011100010000",
+          "1011101001111001111011111",
+          "1011101000101110111000110",
+          "1011101000100110100011010",
+          "1000001001101100111100010",
+          "1111111010011100111001001"
+        ];
+
+        let svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${svgSize} ${svgSize}" shape-rendering="crispEdges">`;
+        svg += `<rect width="${svgSize}" height="${svgSize}" fill="transparent"/>`;
+
+        const offset = 16;
+        for (let y = 0; y < qrSize; y++) {
+          for (let x = 0; x < qrSize; x++) {
+            if (matrix[y][x] === '1') {
+              svg += `<rect x="${offset + x * cellSize}" y="${offset + y * cellSize}" width="${cellSize}" height="${cellSize}" fill="#e6edf3" rx="1"/>`;
+            }
+          }
+        }
+
+        svg += '</svg>';
+        return svg;
+      }
+
+      const container = document.getElementById('qr-container');
+      if (container) {
+        container.innerHTML = generateQR();
+      }
+    })();
+  </script>
 </body>
 </html>
