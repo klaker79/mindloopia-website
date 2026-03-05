@@ -680,10 +680,6 @@
         </div>
       </div>
 
-      <!-- Visual banner -->
-      <div class="reveal" style="margin-top: var(--space-3xl);">
-        <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1400&q=80&auto=format" alt="AI technology visualization" class="image-banner" loading="lazy">
-      </div>
     </div>
   </section>
 
@@ -1214,7 +1210,7 @@
     function renderQR() {
       if (typeof qrcode === 'undefined') return '<p style="color:var(--color-text-muted);">QR failed to load</p>';
       var qr = qrcode(0, 'M');
-      qr.addData('https://mindloopia.com');
+      qr.addData('https://klaker79.github.io/mindloopia-website/');
       qr.make();
       var count = qr.getModuleCount();
       var cell = 7, pad = 20;
